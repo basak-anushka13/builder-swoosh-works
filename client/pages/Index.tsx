@@ -183,7 +183,7 @@ export default function Index() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-emerald-800">
               <a href="#home" className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
               <a href="#services" className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
-              <a href="#products" className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Products</a>
+              <Link to="/products" className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Products</Link>
               <a href="#news" className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium">News</a>
               <a href="#contact" className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
               <button
