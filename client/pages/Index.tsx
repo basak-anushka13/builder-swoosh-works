@@ -147,7 +147,7 @@ export default function Index() {
               <div className="ml-10 flex items-baseline space-x-4">
                 <a href="#home" className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
                 <a href="#services" className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                <a href="#products" className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Products</a>
+                <Link to="/products" className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Products</Link>
                 <a href="#news" className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">News</a>
                 <a href="#contact" className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                 <button
