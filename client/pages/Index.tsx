@@ -54,14 +54,14 @@ export default function Index() {
       id: "2",
       name: "Fresh Milk",
       price: "₹35/liter",
-      icon: <Milk className="h-6 w-6" />,
+      icon: <Package className="h-6 w-6" />,
       category: "Dairy"
     },
     {
       id: "3",
       name: "Whole Wheat Bread",
       price: "₹25/loaf",
-      icon: <Bread className="h-6 w-6" />,
+      icon: <Package className="h-6 w-6" />,
       category: "Bakery"
     },
     {
