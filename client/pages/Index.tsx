@@ -96,11 +96,30 @@ export default function Index() {
     }
   ];
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", contactForm);
-    setContactForm({ name: "", message: "" });
-    alert("Thank you for your message! We'll get back to you soon.");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contactForm),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setContactForm({ name: "", message: "" });
+        alert(data.message);
+      } else {
+        alert(data.message || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   return (
