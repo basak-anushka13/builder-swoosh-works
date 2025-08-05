@@ -44,36 +44,42 @@ export default function Index() {
 
   const products = [
     {
+      id: "1",
       name: "Organic Rice",
       price: "₹45/kg",
       icon: <Wheat className="h-6 w-6" />,
       category: "Grains"
     },
     {
+      id: "2",
       name: "Fresh Milk",
       price: "₹35/liter",
       icon: <Milk className="h-6 w-6" />,
       category: "Dairy"
     },
     {
+      id: "3",
       name: "Whole Wheat Bread",
       price: "₹25/loaf",
       icon: <Bread className="h-6 w-6" />,
       category: "Bakery"
     },
     {
+      id: "4",
       name: "Seasonal Vegetables",
       price: "₹20/kg",
       icon: <Apple className="h-6 w-6" />,
       category: "Produce"
     },
     {
+      id: "5",
       name: "Basic Medicine Kit",
       price: "₹150",
       icon: <Pill className="h-6 w-6" />,
       category: "Healthcare"
     },
     {
+      id: "6",
       name: "Household Essentials",
       price: "₹80",
       icon: <Package className="h-6 w-6" />,
