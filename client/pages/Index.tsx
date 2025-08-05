@@ -150,6 +150,17 @@ export default function Index() {
                 <a href="#products" className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Products</a>
                 <a href="#news" className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">News</a>
                 <a href="#contact" className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                <button
+                  onClick={openCart}
+                  className="relative text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  <ShoppingBag className="h-5 w-5" />
+                  {getTotalItems() > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                      {getTotalItems()}
+                    </span>
+                  )}
+                </button>
                 <Link to="/login" className="bg-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-emerald-500">Login</Link>
               </div>
             </div>
