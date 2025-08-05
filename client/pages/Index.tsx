@@ -419,6 +419,9 @@ export default function Index() {
           </div>
         </div>
       </footer>
+
+      {/* Shopping Cart */}
+      <Cart />
     </div>
   );
 }
