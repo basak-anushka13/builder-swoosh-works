@@ -24,5 +24,13 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
 
+  // Rural platform API routes
+  app.get("/api/services", getServices);
+  app.get("/api/products", getProducts);
+  app.get("/api/news", getNews);
+  app.post("/api/register", register);
+  app.post("/api/login", login);
+  app.post("/api/contact", submitContact);
+
   return app;
 }
