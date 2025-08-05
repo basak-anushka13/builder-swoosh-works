@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, Truck, Phone, MapPin, Clock, Users, Leaf, Package, ShoppingBag, Pill, Apple, Wheat, Milk, Bread, Car, Menu, X } from "lucide-react";
+import { Heart, Truck, Phone, MapPin, Clock, Users, Leaf, Package, ShoppingBag, Pill, Apple, Wheat, Car, Menu, X } from "lucide-react";
 import { useCart } from "../contexts/CartContext";
 import { Cart } from "../components/Cart";
 
