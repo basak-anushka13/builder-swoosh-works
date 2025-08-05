@@ -7,6 +7,7 @@ import { Cart } from "../components/Cart";
 export default function Index() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [contactForm, setContactForm] = useState({ name: "", message: "" });
+  const { addItem, openCart, getTotalItems } = useCart();
 
   const services = [
     {
