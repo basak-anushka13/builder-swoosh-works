@@ -269,7 +269,16 @@ export default function Index() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-2xl font-bold text-emerald-600">{product.price}</span>
-                  <button className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">
+                  <button
+                    onClick={() => addItem({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      category: product.category,
+                      icon: ""
+                    })}
+                    className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors"
+                  >
                     Add to Cart
                   </button>
                 </div>
