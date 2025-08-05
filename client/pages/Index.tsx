@@ -186,6 +186,16 @@ export default function Index() {
               <a href="#products" className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Products</a>
               <a href="#news" className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium">News</a>
               <a href="#contact" className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  openCart();
+                }}
+                className="text-emerald-100 hover:text-white flex items-center px-3 py-2 rounded-md text-base font-medium w-full"
+              >
+                <ShoppingBag className="h-5 w-5 mr-2" />
+                Cart ({getTotalItems()})
+              </button>
               <Link to="/login" className="bg-emerald-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-emerald-500">Login</Link>
             </div>
           </div>
