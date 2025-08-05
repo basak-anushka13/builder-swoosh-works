@@ -285,6 +285,15 @@ export default function Index() {
               </div>
             ))}
           </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/products"
+              className="bg-emerald-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-colors inline-block"
+            >
+              View All Products
+            </Link>
+          </div>
         </div>
       </section>
 
