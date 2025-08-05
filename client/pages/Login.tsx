@@ -5,7 +5,7 @@ import { Leaf, Eye, EyeOff } from "lucide-react";
 export default function Login() {
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +13,7 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     try {
       const response = await fetch("/api/login", {
         method: "POST",
@@ -22,7 +22,7 @@ export default function Login() {
         },
         body: JSON.stringify(formData),
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("token", data.token);
@@ -45,12 +45,19 @@ export default function Login() {
         <div className="text-center">
           <Link to="/" className="flex items-center justify-center mb-6">
             <Leaf className="h-12 w-12 text-emerald-600 mr-3" />
-            <span className="text-3xl font-bold text-gray-900">RuralConnect</span>
+            <span className="text-3xl font-bold text-gray-900">
+              RuralConnect
+            </span>
           </Link>
-          <h2 className="text-3xl font-bold text-gray-900">Sign in to your account</h2>
+          <h2 className="text-3xl font-bold text-gray-900">
+            Sign in to your account
+          </h2>
           <p className="mt-2 text-sm text-gray-600">
             Or{" "}
-            <Link to="/signup" className="font-medium text-emerald-600 hover:text-emerald-500">
+            <Link
+              to="/signup"
+              className="font-medium text-emerald-600 hover:text-emerald-500"
+            >
               create a new account
             </Link>
           </p>
@@ -59,7 +66,10 @@ export default function Login() {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="bg-white p-8 rounded-xl shadow-lg space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Email address
               </label>
               <input
@@ -69,14 +79,19 @@ export default function Login() {
                 autoComplete="email"
                 required
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="w-full px-3 py-3 border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="Enter your email"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Password
               </label>
               <div className="relative">
@@ -87,7 +102,9 @@ export default function Login() {
                   autoComplete="current-password"
                   required
                   value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, password: e.target.value })
+                  }
                   className="w-full px-3 py-3 pr-10 border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                   placeholder="Enter your password"
                 />
@@ -113,13 +130,19 @@ export default function Login() {
                   type="checkbox"
                   className="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 rounded"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+                <label
+                  htmlFor="remember-me"
+                  className="ml-2 block text-sm text-gray-700"
+                >
                   Remember me
                 </label>
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-emerald-600 hover:text-emerald-500">
+                <a
+                  href="#"
+                  className="font-medium text-emerald-600 hover:text-emerald-500"
+                >
                   Forgot your password?
                 </a>
               </div>
@@ -138,7 +161,10 @@ export default function Login() {
         </form>
 
         <div className="text-center">
-          <Link to="/" className="text-sm text-emerald-600 hover:text-emerald-500">
+          <Link
+            to="/"
+            className="text-sm text-emerald-600 hover:text-emerald-500"
+          >
             ← Back to home
           </Link>
         </div>

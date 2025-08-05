@@ -16,24 +16,24 @@ export const submitContact: RequestHandler = (req, res) => {
 
     // Validate required fields
     if (!name || !message) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "Name and message are required" 
+      return res.status(400).json({
+        success: false,
+        message: "Name and message are required",
       });
     }
 
     // Validate input lengths
     if (name.length < 2 || name.length > 100) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "Name must be between 2 and 100 characters" 
+      return res.status(400).json({
+        success: false,
+        message: "Name must be between 2 and 100 characters",
       });
     }
 
     if (message.length < 10 || message.length > 1000) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "Message must be between 10 and 1000 characters" 
+      return res.status(400).json({
+        success: false,
+        message: "Message must be between 10 and 1000 characters",
       });
     }
 
@@ -42,7 +42,7 @@ export const submitContact: RequestHandler = (req, res) => {
       id: submissionIdCounter.toString(),
       name: name.trim(),
       message: message.trim(),
-      submittedAt: new Date().toISOString()
+      submittedAt: new Date().toISOString(),
     };
 
     contactSubmissions.push(submission);
@@ -53,15 +53,15 @@ export const submitContact: RequestHandler = (req, res) => {
 
     const response: ContactResponse = {
       success: true,
-      message: "Thank you for your message! We'll get back to you soon."
+      message: "Thank you for your message! We'll get back to you soon.",
     };
 
     res.status(201).json(response);
   } catch (error) {
     console.error("Contact submission error:", error);
-    res.status(500).json({ 
-      success: false, 
-      message: "Internal server error. Please try again later." 
+    res.status(500).json({
+      success: false,
+      message: "Internal server error. Please try again later.",
     });
   }
 };
@@ -71,15 +71,16 @@ export const getContactSubmissions: RequestHandler = (req, res) => {
   try {
     // In production, add authentication middleware to protect this endpoint
     res.json({
-      submissions: contactSubmissions.sort((a, b) => 
-        new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime()
-      )
+      submissions: contactSubmissions.sort(
+        (a, b) =>
+          new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime(),
+      ),
     });
   } catch (error) {
     console.error("Error fetching contact submissions:", error);
-    res.status(500).json({ 
-      success: false, 
-      message: "Internal server error" 
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
     });
   }
 };

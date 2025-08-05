@@ -36,7 +36,7 @@ export interface LoginRequest {
 
 export interface AuthResponse {
   token: string;
-  user: Omit<User, 'id'>;
+  user: Omit<User, "id">;
 }
 
 // Service types
@@ -106,7 +106,7 @@ export interface Booking {
   userId: string;
   items: BookingItem[];
   totalAmount: string;
-  status: 'pending' | 'confirmed' | 'in_transit' | 'delivered' | 'cancelled';
+  status: "pending" | "confirmed" | "in_transit" | "delivered" | "cancelled";
   createdAt: string;
 }
 

@@ -10,7 +10,7 @@ export const getProducts: RequestHandler = (req, res) => {
       category: "Grains",
       icon: "wheat",
       description: "Premium quality organic rice from local farms",
-      inStock: true
+      inStock: true,
     },
     {
       id: "2",
@@ -19,7 +19,7 @@ export const getProducts: RequestHandler = (req, res) => {
       category: "Dairy",
       icon: "milk",
       description: "Pure and fresh milk from local dairy farms",
-      inStock: true
+      inStock: true,
     },
     {
       id: "3",
@@ -28,7 +28,7 @@ export const getProducts: RequestHandler = (req, res) => {
       category: "Bakery",
       icon: "bread",
       description: "Freshly baked whole wheat bread",
-      inStock: true
+      inStock: true,
     },
     {
       id: "4",
@@ -37,7 +37,7 @@ export const getProducts: RequestHandler = (req, res) => {
       category: "Produce",
       icon: "apple",
       description: "Fresh seasonal vegetables from local farmers",
-      inStock: true
+      inStock: true,
     },
     {
       id: "5",
@@ -46,7 +46,7 @@ export const getProducts: RequestHandler = (req, res) => {
       category: "Healthcare",
       icon: "pill",
       description: "Essential medicines for common ailments",
-      inStock: true
+      inStock: true,
     },
     {
       id: "6",
@@ -55,7 +55,7 @@ export const getProducts: RequestHandler = (req, res) => {
       category: "Daily Needs",
       icon: "package",
       description: "Basic household items and cleaning supplies",
-      inStock: true
+      inStock: true,
     },
     {
       id: "7",
@@ -64,7 +64,7 @@ export const getProducts: RequestHandler = (req, res) => {
       category: "Kitchen",
       icon: "droplet",
       description: "Pure sunflower cooking oil",
-      inStock: true
+      inStock: true,
     },
     {
       id: "8",
@@ -73,8 +73,8 @@ export const getProducts: RequestHandler = (req, res) => {
       category: "Kitchen",
       icon: "cube",
       description: "Fine quality white sugar",
-      inStock: true
-    }
+      inStock: true,
+    },
   ];
 
   // Handle search query if provided
@@ -82,23 +82,24 @@ export const getProducts: RequestHandler = (req, res) => {
   let filteredProducts = products;
 
   if (search) {
-    filteredProducts = products.filter(product => 
-      product.name.toLowerCase().includes(search.toLowerCase()) ||
-      product.category.toLowerCase().includes(search.toLowerCase()) ||
-      product.description?.toLowerCase().includes(search.toLowerCase())
+    filteredProducts = products.filter(
+      (product) =>
+        product.name.toLowerCase().includes(search.toLowerCase()) ||
+        product.category.toLowerCase().includes(search.toLowerCase()) ||
+        product.description?.toLowerCase().includes(search.toLowerCase()),
     );
   }
 
   // Handle category filter if provided
   const category = req.query.category as string;
   if (category) {
-    filteredProducts = filteredProducts.filter(product => 
-      product.category.toLowerCase() === category.toLowerCase()
+    filteredProducts = filteredProducts.filter(
+      (product) => product.category.toLowerCase() === category.toLowerCase(),
     );
   }
 
   const response: ProductsResponse = {
-    products: filteredProducts
+    products: filteredProducts,
   };
 
   res.json(response);

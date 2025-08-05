@@ -21,10 +21,19 @@ export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const { addItem, openCart, getTotalItems } = useCart();
 
-  const categories = ["All", "Grains", "Dairy", "Bakery", "Produce", "Healthcare", "Daily Needs", "Kitchen"];
+  const categories = [
+    "All",
+    "Grains",
+    "Dairy",
+    "Bakery",
+    "Produce",
+    "Healthcare",
+    "Daily Needs",
+    "Kitchen",
+  ];
 
   useEffect(() => {
     fetchProducts();
@@ -50,15 +59,18 @@ export default function Products() {
     let filtered = products;
 
     if (searchTerm) {
-      filtered = filtered.filter(product =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description?.toLowerCase().includes(searchTerm.toLowerCase())
+      filtered = filtered.filter(
+        (product) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.description?.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     }
 
     if (selectedCategory && selectedCategory !== "All") {
-      filtered = filtered.filter(product => product.category === selectedCategory);
+      filtered = filtered.filter(
+        (product) => product.category === selectedCategory,
+      );
     }
 
     setFilteredProducts(filtered);
@@ -82,13 +94,23 @@ export default function Products() {
               <Leaf className="h-8 w-8 text-emerald-100 mr-2" />
               <span className="text-xl font-bold text-white">RuralConnect</span>
             </Link>
-            
+
             {/* Desktop Menu */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <Link to="/" className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</Link>
-                <Link to="/products" className="text-white bg-emerald-600 px-3 py-2 rounded-md text-sm font-medium">Products</Link>
-                <button 
+                <Link
+                  to="/"
+                  className="text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/products"
+                  className="text-white bg-emerald-600 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Products
+                </Link>
+                <button
                   onClick={openCart}
                   className="relative text-emerald-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
@@ -99,29 +121,48 @@ export default function Products() {
                     </span>
                   )}
                 </button>
-                <Link to="/login" className="bg-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-emerald-500">Login</Link>
+                <Link
+                  to="/login"
+                  className="bg-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-emerald-500"
+                >
+                  Login
+                </Link>
               </div>
             </div>
-            
+
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-emerald-100 hover:text-white p-2"
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
             </div>
           </div>
         </div>
-        
+
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-emerald-800">
-              <Link to="/" className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
-              <Link to="/products" className="text-white bg-emerald-600 block px-3 py-2 rounded-md text-base font-medium">Products</Link>
-              <button 
+              <Link
+                to="/"
+                className="text-emerald-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                Home
+              </Link>
+              <Link
+                to="/products"
+                className="text-white bg-emerald-600 block px-3 py-2 rounded-md text-base font-medium"
+              >
+                Products
+              </Link>
+              <button
                 onClick={() => {
                   setIsMenuOpen(false);
                   openCart();
@@ -131,7 +172,12 @@ export default function Products() {
                 <ShoppingBag className="h-5 w-5 mr-2" />
                 Cart ({getTotalItems()})
               </button>
-              <Link to="/login" className="bg-emerald-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-emerald-500">Login</Link>
+              <Link
+                to="/login"
+                className="bg-emerald-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-emerald-500"
+              >
+                Login
+              </Link>
             </div>
           </div>
         )}
@@ -141,7 +187,9 @@ export default function Products() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <h1 className="text-3xl font-bold text-gray-900">Products</h1>
-          <p className="mt-2 text-gray-600">Browse our collection of essential products for rural communities</p>
+          <p className="mt-2 text-gray-600">
+            Browse our collection of essential products for rural communities
+          </p>
         </div>
       </div>
 
@@ -162,7 +210,7 @@ export default function Products() {
                 className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
               />
             </div>
-            
+
             {/* Category Filter */}
             <div className="relative">
               <select
@@ -171,7 +219,10 @@ export default function Products() {
                 className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
               >
                 {categories.map((category) => (
-                  <option key={category} value={category === "All" ? "" : category}>
+                  <option
+                    key={category}
+                    value={category === "All" ? "" : category}
+                  >
                     {category}
                   </option>
                 ))}
@@ -188,7 +239,9 @@ export default function Products() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {filteredProducts.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No products found matching your criteria.</p>
+            <p className="text-gray-500 text-lg">
+              No products found matching your criteria.
+            </p>
             <button
               onClick={() => {
                 setSearchTerm("");
@@ -204,18 +257,17 @@ export default function Products() {
             <div className="mb-6">
               <p className="text-gray-600">
                 Showing {filteredProducts.length} of {products.length} products
-                {searchTerm && (
-                  <span> for "{searchTerm}"</span>
-                )}
-                {selectedCategory && (
-                  <span> in {selectedCategory}</span>
-                )}
+                {searchTerm && <span> for "{searchTerm}"</span>}
+                {selectedCategory && <span> in {selectedCategory}</span>}
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredProducts.map((product) => (
-                <div key={product.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
+                <div
+                  key={product.id}
+                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6"
+                >
                   <div className="flex items-center mb-4">
                     <div className="text-emerald-600 mr-3">
                       <div className="h-6 w-6 bg-emerald-100 rounded-full flex items-center justify-center">
@@ -223,25 +275,35 @@ export default function Products() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
-                      <p className="text-sm text-gray-500">{product.category}</p>
+                      <h3 className="text-lg font-semibold text-gray-900">
+                        {product.name}
+                      </h3>
+                      <p className="text-sm text-gray-500">
+                        {product.category}
+                      </p>
                     </div>
                   </div>
-                  
+
                   {product.description && (
-                    <p className="text-sm text-gray-600 mb-4">{product.description}</p>
+                    <p className="text-sm text-gray-600 mb-4">
+                      {product.description}
+                    </p>
                   )}
-                  
+
                   <div className="flex justify-between items-center">
-                    <span className="text-xl font-bold text-emerald-600">{product.price}</span>
+                    <span className="text-xl font-bold text-emerald-600">
+                      {product.price}
+                    </span>
                     <button
-                      onClick={() => addItem({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        category: product.category,
-                        icon: product.icon
-                      })}
+                      onClick={() =>
+                        addItem({
+                          id: product.id,
+                          name: product.name,
+                          price: product.price,
+                          category: product.category,
+                          icon: product.icon,
+                        })
+                      }
                       disabled={!product.inStock}
                       className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                         product.inStock

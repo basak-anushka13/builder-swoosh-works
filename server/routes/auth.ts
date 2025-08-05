@@ -21,18 +21,18 @@ export const register: RequestHandler = (req, res) => {
 
     // Validate required fields
     if (!name || !email || !phone || !address || !password) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "All fields are required" 
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
       });
     }
 
     // Check if user already exists
-    const existingUser = users.find(user => user.email === email);
+    const existingUser = users.find((user) => user.email === email);
     if (existingUser) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "User with this email already exists" 
+      return res.status(400).json({
+        success: false,
+        message: "User with this email already exists",
       });
     }
 
@@ -43,7 +43,7 @@ export const register: RequestHandler = (req, res) => {
       email,
       phone,
       address,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
 
     users.push(newUser);
@@ -59,16 +59,16 @@ export const register: RequestHandler = (req, res) => {
         email: newUser.email,
         phone: newUser.phone,
         address: newUser.address,
-        createdAt: newUser.createdAt
-      }
+        createdAt: newUser.createdAt,
+      },
     };
 
     res.status(201).json(response);
   } catch (error) {
     console.error("Registration error:", error);
-    res.status(500).json({ 
-      success: false, 
-      message: "Internal server error" 
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
     });
   }
 };
@@ -79,24 +79,24 @@ export const login: RequestHandler = (req, res) => {
 
     // Validate required fields
     if (!email || !password) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "Email and password are required" 
+      return res.status(400).json({
+        success: false,
+        message: "Email and password are required",
       });
     }
 
     // Find user
-    const user = users.find(user => user.email === email);
+    const user = users.find((user) => user.email === email);
     if (!user) {
-      return res.status(401).json({ 
-        success: false, 
-        message: "Invalid email or password" 
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email or password",
       });
     }
 
     // In production, verify hashed password
     // For demo purposes, accept any password for existing users
-    
+
     // Generate token
     const token = generateToken(user.id);
 
@@ -107,16 +107,16 @@ export const login: RequestHandler = (req, res) => {
         email: user.email,
         phone: user.phone,
         address: user.address,
-        createdAt: user.createdAt
-      }
+        createdAt: user.createdAt,
+      },
     };
 
     res.json(response);
   } catch (error) {
     console.error("Login error:", error);
-    res.status(500).json({ 
-      success: false, 
-      message: "Internal server error" 
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
     });
   }
 };
@@ -124,24 +124,24 @@ export const login: RequestHandler = (req, res) => {
 // Middleware to verify token (for protected routes)
 export const verifyToken: RequestHandler = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+  const token = authHeader && authHeader.split(" ")[1]; // Bearer TOKEN
 
   if (!token) {
-    return res.status(401).json({ 
-      success: false, 
-      message: "Access token required" 
+    return res.status(401).json({
+      success: false,
+      message: "Access token required",
     });
   }
 
   // In production, verify JWT token
   // For demo purposes, just check if token exists and extract user ID
-  const userId = token.split('_')[1];
-  const user = users.find(u => u.id === userId);
+  const userId = token.split("_")[1];
+  const user = users.find((u) => u.id === userId);
 
   if (!user) {
-    return res.status(401).json({ 
-      success: false, 
-      message: "Invalid token" 
+    return res.status(401).json({
+      success: false,
+      message: "Invalid token",
     });
   }
 
