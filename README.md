@@ -4,7 +4,7 @@ A full-stack web application designed to help rural communities easily find and 
 
 ## 🚀 Live Demo
 
-**Demo URL:** [https://a1ff6a91e0624dda8600d7852936cd31-d91a8a5ab1b041d29f03a7371.fly.dev](https://a1ff6a91e0624dda8600d7852936cd31-d91a8a5ab1b041d29f03a7371.fly.dev)
+**Demo URL:** [https://6892463488df9ea4d279f2b4--candid-sprinkles-3b9631.netlify.app/](https://6892463488df9ea4d279f2b4--candid-sprinkles-3b9631.netlify.app/)
 
 **Demo Login Credentials:**
 - Create a new account via the signup page, or
